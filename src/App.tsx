@@ -1,34 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/logo.svg'
-import './App.css'
-import './index.css'
+import "./index.css";
+import { Button, TextPreset1, Typography } from "./components";
+import { useState } from "react";
+import { usePreferredTheme } from "./utils";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isHovered, setIsHovered] = useState(false);
+  const [isButtonActive, setIsButtonActive] = useState(false);
+  const { theme, setTheme } = usePreferredTheme();
+  const isDarkTheme = theme === "dark";
+
+  const getButtonTextColor = () => {
+    // Dark theme
+    if (isDarkTheme) {
+      return isButtonActive ? "N900" : "N0";
+    }
+
+    // Light theme
+    if (isButtonActive) {
+      return "N0";
+    }
+    return isHovered ? "N600" : "N900";
+};
 
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <TextPreset1 text="Extensions" color={isDarkTheme ? "N0" : "N900"}/>
+
+        <Button
+          $isActive={isButtonActive}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onClick={() => setIsButtonActive(prev => !prev)}
+        >
+          <Typography
+            fontWeight={isButtonActive ? "medium" : "regular"}
+            color={getButtonTextColor()}
+          >
+            Click me
+          </Typography>
+        </Button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
