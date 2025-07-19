@@ -51,17 +51,30 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  /* display: flex;
+  place-items: center; */
+  /* min-width: 320px; */
+  /* max-width: 1170px; */
+  /* width:  80%;
+  margin: 0 auto; */
   min-height: 100vh;
 }
 
-div {
+main {
+  max-width: 1170px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding-top: var(--spacing500);
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: var(--spacing800);
+}
+
+section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
 }
 

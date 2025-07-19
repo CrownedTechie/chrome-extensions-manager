@@ -1,7 +1,8 @@
 import "./index.css";
-import { Button, TextPreset1, Typography } from "./components";
+import { Button, Header, TextPreset1, ThemeIcon, Typography } from "./components";
 import { useState } from "react";
 import { usePreferredTheme } from "./utils";
+import { DarkThemeLogo, LightThemeLogo, MoonIcon, SunIcon } from "./assets";
 
 function App() {
   const [isHovered, setIsHovered] = useState(false);
@@ -24,23 +25,41 @@ function App() {
 
   return (
     <>
-      <div>
-        <TextPreset1 text="Extensions" color={isDarkTheme ? "N0" : "N900"}/>
+      <main>
+        <Header>
+           <img 
+            src={isDarkTheme ? DarkThemeLogo :LightThemeLogo} 
+            alt="Extensions logo" 
+           />
 
-        <Button
-          $isActive={isButtonActive}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onClick={() => setIsButtonActive(prev => !prev)}
-        >
-          <Typography
-            fontWeight={isButtonActive ? "medium" : "regular"}
-            color={getButtonTextColor()}
+          <ThemeIcon onClick={() => setTheme(prev => prev === "dark" ? "light" : "dark")}>
+            <img src={isDarkTheme ? SunIcon : MoonIcon} alt={`${theme} icon`}/>
+          </ThemeIcon>
+        </Header>
+
+        <section>
+          <TextPreset1 text="Extensions" color={isDarkTheme ? "N0" : "N900"}/>
+
+          <Button
+            $isActive={isButtonActive}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onClick={() => setIsButtonActive(prev => !prev)}
           >
-            Click me
-          </Typography>
-        </Button>
-      </div>
+            <Typography
+              fontWeight={isButtonActive ? "medium" : "regular"}
+              color={getButtonTextColor()}
+              textAlign="center"
+            >
+              Click me
+            </Typography>
+          </Button>
+        </section>
+
+
+      </main>
+      
+      
     </>
   )
 }
