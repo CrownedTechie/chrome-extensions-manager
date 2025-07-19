@@ -2,9 +2,11 @@
   "manifest_version": 3,
   "name": "Extensions",
   "version": "1.0.0",
-  "description": "An extension manager that allows you to manage your extensions easily.",
+  "description": "An extension that allows you to manage your extensions easily.",
   "action": {
-    "default_popup": "index.html",
-    "default_icon": "vite.svg"
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "48": "logo.png"
   }
 }
