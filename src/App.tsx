@@ -2,6 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/logo.svg'
 import './App.css'
+import './index.css'
+import { Typography } from './components/typography';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,6 +30,15 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+      <Typography 
+        as='h2' 
+        fontSize="md"
+        fontWeight="bold" 
+        color="N600"
+      >
+        Checking my typo
+      </Typography>
     </>
   )
 }
