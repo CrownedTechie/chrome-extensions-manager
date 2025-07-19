@@ -10,11 +10,13 @@ export type TypographyColors = "N900" | "N800" | "N700" | "N600" | "N300" | "N20
 
 export type TypographyFontSizes = "lg" | "md" | "sm";
 
-
 export interface ITypographyProps {
  as?: TypographyElements;
  fontSize?: TypographyFontSizes;
  fontWeight?: TypographyFontWeights;
  color?: TypographyColors;
+ lineHeight?: string;
+ letterSpacing?: string;
+ textAlign?: "left" | "center" | "right" | "justify";
  children?: ReactNode;
 };

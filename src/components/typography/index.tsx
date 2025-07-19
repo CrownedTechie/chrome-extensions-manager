@@ -27,13 +27,18 @@ const fontSizeMap = {
  sm: "1rem" // 16px
 };
 
-const StyledTypography = styled(({ 
- as: Tag = "p", 
- ...rest 
-}) => <Tag {...rest} />)<ITypographyProps>`
+const StyledTypography = styled(
+  ({ 
+    as: Tag = "p", 
+    ...rest 
+  }) => <Tag { ...rest }/>
+)<ITypographyProps>`
   font-weight: ${({ fontWeight = "regular" }) => fontWeightMap[fontWeight]};
-  color: ${({color = "N900"}) => colorMap[color]};
-  font-size: ${({fontSize = "sm"}) => fontSizeMap[fontSize]};
+  color: ${({ color = "N900" }) => colorMap[color]};
+  font-size: ${({ fontSize = "sm" }) => fontSizeMap[fontSize]};
+  line-height: ${({ lineHeight }) => lineHeight || "normal"};
+  text-align: ${({ textAlign }) => textAlign || "left"};
+  letter-spacing: ${({ letterSpacing }) => letterSpacing || "normal"};
 `;
 
 export const Typography = ({
@@ -41,18 +46,22 @@ export const Typography = ({
  fontWeight,
  color,
  fontSize,
- children
+ children,
+ lineHeight,
+ letterSpacing,
+ textAlign
 }: ITypographyProps) => {
   return (
     <StyledTypography
-     as={as}
-     fontSize={fontSize}
-     fontWeight={fontWeight}
-     color={color}
+      as={as}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      color={color}
+      lineHeight={lineHeight}
+      letterSpacing={letterSpacing}
+      textAlign={textAlign}
     >
       {children}
     </StyledTypography>
   )
 };
-
-
