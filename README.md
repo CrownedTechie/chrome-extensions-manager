@@ -1,69 +1,83 @@
-# React + TypeScript + Vite
+# 🧩 About the Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the staging-web branch! This branch is my solution to the [Browser extensions manager UI challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/browser-extension-manager-ui-yNZnOfsMAp). No API calls here — this branch is all mock data, straight from what was provided for the challenge. Just had fun building things out with it. Hopefully it helps someone!
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [Features](#features)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [Project Structure](#project-structure)
+  - [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Steps](#steps)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Features
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Users should be able to:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- Toggle extensions between active and inactive states
+- Filter active and inactive extensions
+- Remove extensions from the list
+- Select their color theme
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## My process
+
+### Built with
+
+- [Typescript](https://www.typescriptlang.org/) - Strict typing
+- [React](https://reactjs.org/) - JS library
+- [Styled Components](https://styled-components.com/) - For styles
+
+### Project Structure
+
+src/
+├── assets/        # Svgs
+├── components/    # Shared components
+├── utils/         # Helper zone
+├── App.tsx        # Root component that holds the UI structue
+├── data.ts        # Mock extension data 
+├── index.css      # Main css file
+└── main.tsx       # Boots the app, mounts <App /> to the DOM
+public/            # Images and other static files
+environments/      # Environment-specific configuration
+
+### Installation
+
+#### Prerequisites
+
+- Node.js (v20 or later)
+- npm
+
+
+#### Steps
+
+1. Clone the repository
+```sh
+  git clone https://github.com/CrownedTechie/chrome-extensions-manager.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install Dependencies
+```sh
+  npm install 
 ```
+
+3. Run the Development Server
+```sh
+  npm run dev
+```
+
+5. Build for Production
+```sh
+  npm run build
+```
+
+***
+Made with 🩷 by Crownedtechie 
+- Email - [@nenchi00@gmail.com](mailto:nenchi00@gmail.com)
+- LinkedIn - [@Chinenye U. Agu](https://www.linkedin.com/in/chinenye-u-agu-53b715193/)
