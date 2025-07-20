@@ -50,7 +50,6 @@ function App() {
 		)
 	};
 
-
 		const activeCards = extensionData.filter(item => item.isActive);
 		const inactiveCards = extensionData.filter(item => !item.isActive);
 		const filteredCards = {
@@ -58,7 +57,6 @@ function App() {
 			Active: activeCards,
 			Inactive: inactiveCards
 		}[activeTab] || [];
-
 
   return (
     <>
