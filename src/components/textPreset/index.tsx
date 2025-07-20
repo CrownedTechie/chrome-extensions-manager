@@ -12,7 +12,7 @@ export const TextPreset1 = ({ text, color }: TextPresetProps) => (
     fontSize="lg"
     fontWeight="bold"
     color={color}
-    lineHeight="100%"
+    $lineHeight="100%"
     letterSpacing="-1px"
   >
     { text }
@@ -25,7 +25,7 @@ export const TextPreset2 = ({ text, color }: TextPresetProps) => (
     fontSize="md"
     fontWeight="bold"
     color={color}
-    lineHeight="120%"
+    $lineHeight="120%"
     letterSpacing="-0.2px"
   >
     { text }
@@ -37,7 +37,7 @@ export const TextPreset3 = ({ text, color }: TextPresetProps) => (
     as="h3"
     fontSize="md"
     color={color}
-    lineHeight="140%"
+    $lineHeight="140%"
     letterSpacing="-0.3px"
   >
     { text }
@@ -50,7 +50,7 @@ export const TextPreset4 = ({ text, color }: TextPresetProps) => (
     fontSize="md"
     fontWeight="medium"
     color={color}
-    lineHeight="140%"
+    $lineHeight="140%"
     letterSpacing="-0.3px"
   >
     { text }
@@ -61,7 +61,7 @@ export const TextPreset5 = ({ text, color }: TextPresetProps) => (
   <Typography
     fontSize="sm"
     color={color}
-    lineHeight="140%"
+    $lineHeight="140%"
     letterSpacing="-0.5px"
   >
     { text }
@@ -75,7 +75,7 @@ export const TextPreset6 = ({ text, color }: TextPresetProps) => (
     fontSize="sm"
     fontWeight="medium"
     color={color}
-    lineHeight="140%"
+    $lineHeight="140%"
     letterSpacing="-0.5px"
   >
     { text }

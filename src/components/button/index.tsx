@@ -7,7 +7,7 @@ interface IStyledButtonProps {
  $padding?: string;
 }
 
-export const StyledButton = styled.button<IStyledButtonProps>`
+const StyledButton = styled.button<IStyledButtonProps>`
  border-radius: var( --rounded-full);
  border: 1px solid transparent;
  padding: ${({ $padding }) => $padding || "var(--spacing100) var(--spacing250)"};
@@ -51,41 +51,39 @@ export const StyledButton = styled.button<IStyledButtonProps>`
 interface IButtonProps {
 		theme: "light" | "dark";
 		text: string;
+		isButtonActive: boolean;
+		handleClick: () => void;
 }
 
 export const Button = ({
 	theme,
-	text
+	text,
+	isButtonActive,
+	handleClick
 }: IButtonProps) => {
-		const [isButtonActive, setIsButtonActive] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-
 		const isDarkTheme = theme === "dark";
 
 		const getButtonTextColor = () => {
-			// Dark theme
-			if (isDarkTheme) {
-					return isButtonActive ? "N900" : "N0";
-			}
-
-			// Light theme
-			if (isButtonActive) {
-					return "N0";
-			}
-			return isHovered ? "N600" : "N900";
-		};
+  if (isDarkTheme) {
+    return isButtonActive ? "N900" : "N0";
+  } else {
+    if (isButtonActive) return "N0";
+    return isHovered ? "N600" : "N900";
+  }
+};
 
   return (
     <StyledButton
 					$isActive={isButtonActive}
 					onMouseEnter={() => setIsHovered(true)}
 					onMouseLeave={() => setIsHovered(false)}
-					onClick={() => setIsButtonActive(prev => !prev)}
+     onClick={handleClick}
 				>
       <Typography
         fontWeight={isButtonActive ? "medium" : "regular"}
         color={getButtonTextColor()}
-        textalign="center"
+        $textAlign="center"
       >
         {text}
       </Typography>

@@ -49,8 +49,13 @@
   --rounded-full: 999px;
 }
 
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   /* display: flex;
   place-items: center; */
   /* min-width: 320px; */

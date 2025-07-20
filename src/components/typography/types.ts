@@ -15,8 +15,8 @@ export interface ITypographyProps {
  fontSize?: TypographyFontSizes;
  fontWeight?: TypographyFontWeights;
  color?: TypographyColors;
- lineheight?: string;
+ $lineHeight?: string;
  letterSpacing?: string;
- textalign?: "left" | "center" | "right" | "justify";
+ $textAlign?: "left" | "center" | "right" | "justify";
  children?: ReactNode;
 };
