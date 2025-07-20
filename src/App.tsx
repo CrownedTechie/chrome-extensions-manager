@@ -22,7 +22,6 @@ function App() {
 
 							<section>
 								<Button 
-									theme={theme}
 									text="Click me"
 									isButtonActive={isButtonActive}
 									handleClick={handleButtonActive}

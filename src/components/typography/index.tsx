@@ -34,7 +34,7 @@ const StyledTypography = styled(
   }) => <Tag { ...rest }/>
 )<ITypographyProps>`
   font-weight: ${({ fontWeight = "regular" }) => fontWeightMap[fontWeight]};
-  color: ${({ color = "N900" }) => colorMap[color]};
+  color: ${({ color }) => color ? colorMap[color] : "inherit" };
   font-size: ${({ fontSize = "sm" }) => fontSizeMap[fontSize]};
   line-height: ${({ $lineHeight }) => $lineHeight || "normal"};
   text-align: ${({ $textAlign }) => $textAlign || "left"};

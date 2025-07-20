@@ -90,13 +90,11 @@ export const RemoveModal = ({
 
    <ModalActions>
     <Button 
-     theme={theme}
      text="Remove" 
      isButtonActive={false}
      handleClick={handleRemove}
     />
     <Button 
-     theme={theme}
      text="Cancel" 
      isButtonActive={false}
      handleClick={handleCloseModal}
