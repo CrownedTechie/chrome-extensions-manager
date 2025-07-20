@@ -2,6 +2,7 @@ import "./index.css";
 import { Button, Card, Header, SwitchButton} from "./components";
 import { usePreferredTheme } from "./utils";
 import { useState } from "react";
+import { DevLensLogo } from "./assets";
 
 function App() {
   const { theme, setTheme } = usePreferredTheme();
@@ -33,6 +34,7 @@ function App() {
 									theme={theme} 
 									title="DevLens"
 									description="Quickly inspect page layouts and visualize element boundaries."
+									logo={DevLensLogo}
 								/>
 							</section>
       </main>

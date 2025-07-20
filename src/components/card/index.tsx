@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { DevLensLogo } from "../../assets";
 import { TextPreset2, TextPreset5 } from "../textPreset";
 import { Button } from "../button";
 import { SwitchButton } from "../switch";
+import { RemoveModal } from "../removeModal";
+import { useState } from "react";
 
 const CardContainer = styled.article`
  width: 382px;
@@ -40,28 +41,35 @@ const CardActions = styled.div`
  display: flex;
  align-items: center;
  justify-content: space-between;
-
 `;
 
 interface ICardProps {
  theme: "light" | "dark";
  title: string;
  description: string;
+ logo: string;
 };
 
 export const Card = ({
  theme,
  title,
- description
+ description,
+ logo
 }: ICardProps) => {
+ const [openModal, setOpenModal] = useState<boolean>(false);
  const isDarkTheme = theme === "dark";
 
+ const handleRemoveItem = () => {
+  setOpenModal(false);
+ };
+
  return (
-  <CardContainer>
+  <>
+   <CardContainer>
    <CardHeader>
     <img 
-     src={DevLensLogo}
-     alt="DevLens Logo"
+     src={logo}
+     alt={`${title} Logo`}
     />
 
     <ExtensionDetails>
@@ -81,11 +89,23 @@ export const Card = ({
      theme={theme}
      text="Remove" 
      isButtonActive={false}
-     handleClick={() => {}}
+     handleClick={() => setOpenModal(true)}
     />
 
     <SwitchButton />
    </CardActions>
   </CardContainer>
+
+  {openModal && (
+   <RemoveModal 
+    name={title}
+    logo={logo}
+    theme={theme}
+    isModalOpen={openModal}
+    handleCloseModal={() => setOpenModal(false)}
+    handleRemove={handleRemoveItem}
+   />
+  )}
+  </>
  )
 }
