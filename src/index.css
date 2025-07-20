@@ -63,6 +63,8 @@ body {
   /* width:  80%;
   margin: 0 auto; */
   min-height: 100vh;
+  /* display: flex;
+  justify-content: center; */
 }
 
 main {
@@ -75,14 +77,6 @@ main {
   flex-direction: column;
   justify-items: center;
   gap: var(--spacing800);
-}
-
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  gap: var(--spacing200);
 }
 
   /* Light theme styling */

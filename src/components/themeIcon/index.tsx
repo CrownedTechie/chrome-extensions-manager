@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const ThemeIcon = styled.div`
+export const ThemeIcon = styled.button`
  display: flex;
  align-items: center;
  justify-content: center;

@@ -5,14 +5,15 @@ import { RemoveModal } from "../removeModal";
 import { useState } from "react";
 
 const CardContainer = styled.article`
- width: 382px;
- height: 200px;
+ width: 100%;
+ max-width: 382px;
  padding: var(--spacing250);
  border-radius: var(--rounded20);
  border: 1px solid transparent;
  display: flex;
  flex-direction: column;
  justify-content: space-between;
+ gap: var(--spacing300);
 
  body[data-theme="light"] & {
   background-color: var(--neutral0);

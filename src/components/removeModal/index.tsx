@@ -59,6 +59,8 @@ interface IRemoveModalProps {
  handleRemove: () => void;
 }
 
+interface EscapeKeyEvent extends React.KeyboardEvent<HTMLDialogElement> {};
+
 export const RemoveModal = ({
  name,
  logo,
@@ -78,8 +80,20 @@ export const RemoveModal = ({
   }
 }, [isModalOpen]);
 
+const handleEscapeClick = (e: EscapeKeyEvent): void => {
+  if (isModalOpen && e.key === "Escape") {
+    handleCloseModal();
+  }
+};
+
  return (
-  <ModalContainer ref={dialogRef}>
+  <ModalContainer 
+    ref={dialogRef}
+    aria-modal="true"
+    role="dialog"
+    aria-labelledby="remove-modal"
+    onKeyDown={handleEscapeClick}
+  >
    <ModalHeader>
     <img src={logo} alt={`${name} logo`}/>
     <TextPreset4 

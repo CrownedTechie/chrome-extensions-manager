@@ -1,5 +1,5 @@
 import "./index.css";
-import { Button, Card, Header, SwitchButton} from "./components";
+import { Button, Card, Header, SectionHeader } from "./components";
 import { usePreferredTheme } from "./utils";
 import { useState } from "react";
 import { DevLensLogo } from "./assets";
@@ -11,7 +11,6 @@ function App() {
 		const handleButtonActive = () => {
 			setIsButtonActive(prev => !prev)
 		};
-		
   return (
     <>
       <main>
@@ -21,13 +20,28 @@ function App() {
 							/>
 
 							<section>
-								<Button 
-									text="Click me"
-									isButtonActive={isButtonActive}
-									handleClick={handleButtonActive}
+								<SectionHeader 
+									title="Extensions List"
+									buttonGroup={
+										<>
+										<Button 
+												text="All" 
+												isButtonActive={isButtonActive}
+												handleClick={handleButtonActive}
+											/>
+											<Button 
+												text="Active"
+												isButtonActive={isButtonActive}
+												handleClick={handleButtonActive}
+											/>
+											<Button 
+												text="Inactive" 
+												isButtonActive={isButtonActive}
+												handleClick={handleButtonActive}
+											/>
+										</>
+									}
 								/>
-
-								<SwitchButton />
 
 								<Card 
 									theme={theme} 
