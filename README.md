@@ -35,17 +35,18 @@ Users should be able to:
 - [Styled Components](https://styled-components.com/) - For styles
 
 ### Project Structure
-
+```
 src/
 ├── assets/        # Svgs
 ├── components/    # Shared components
 ├── utils/         # Helper zone
-├── App.tsx        # Root component that holds the UI structue
+├── App.tsx        # Root component that holds the UI structure
 ├── data.ts        # Mock extension data 
 ├── index.css      # Main css file
 └── main.tsx       # Boots the app, mounts <App /> to the DOM
 public/            # Images and other static files
 environments/      # Environment-specific configuration
+```
 
 ### Installation
 
