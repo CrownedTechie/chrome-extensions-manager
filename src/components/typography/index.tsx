@@ -36,8 +36,8 @@ const StyledTypography = styled(
   font-weight: ${({ fontWeight = "regular" }) => fontWeightMap[fontWeight]};
   color: ${({ color = "N900" }) => colorMap[color]};
   font-size: ${({ fontSize = "sm" }) => fontSizeMap[fontSize]};
-  line-height: ${({ lineHeight }) => lineHeight || "normal"};
-  text-align: ${({ textAlign }) => textAlign || "left"};
+  line-height: ${({ lineheight }) => lineheight || "normal"};
+  text-align: ${({ textalign }) => textalign || "left"};
   letter-spacing: ${({ letterSpacing }) => letterSpacing || "normal"};
 `;
 
@@ -47,9 +47,9 @@ export const Typography = ({
  color,
  fontSize,
  children,
- lineHeight,
+ lineheight,
  letterSpacing,
- textAlign
+ textalign
 }: ITypographyProps) => {
   return (
     <StyledTypography
@@ -57,9 +57,9 @@ export const Typography = ({
       fontSize={fontSize}
       fontWeight={fontWeight}
       color={color}
-      lineHeight={lineHeight}
+      lineheight={lineheight}
       letterSpacing={letterSpacing}
-      textAlign={textAlign}
+      textalign={textalign}
     >
       {children}
     </StyledTypography>
