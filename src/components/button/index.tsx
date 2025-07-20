@@ -48,27 +48,26 @@ const StyledButton = styled.button<IStyledButtonProps>`
 
 interface IButtonProps {
 		text: string;
-		isButtonActive: boolean;
-		handleClick: () => void;
+		isActive: boolean;
+		onClick: () => void;
 };
 
 export const Button = ({
 	text,
-	isButtonActive,
-	handleClick
+	isActive,
+	onClick
 }: IButtonProps) => {
-
-  return (
-    <StyledButton
-					$isActive={isButtonActive}
-     onClick={handleClick}
-				>
-      <Typography
-        fontWeight={isButtonActive ? "medium" : "regular"}
-        $textAlign="center"
-      >
-        {text}
-      </Typography>
-    </StyledButton>
-  )
+	return (
+			<StyledButton
+				$isActive={isActive}
+				onClick={onClick}
+			>
+					<Typography
+							fontWeight={isActive ? "medium" : "regular"}
+							$textAlign="center"
+					>
+							{text}
+					</Typography>
+			</StyledButton>
+	)
 };

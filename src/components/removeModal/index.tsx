@@ -33,7 +33,7 @@ const ModalContainer = styled.dialog`
 
  &::backdrop {
    background-color: rgba(0, 0, 0, 0.5);
-   backdrop-filter: blur(4px);
+   backdrop-filter: blur(3px);
  }
 `;
 
@@ -105,13 +105,13 @@ const handleEscapeClick = (e: EscapeKeyEvent): void => {
    <ModalActions>
     <Button 
      text="Remove" 
-     isButtonActive={false}
-     handleClick={handleRemove}
+     isActive={false}
+     onClick={handleRemove}
     />
     <Button 
      text="Cancel" 
-     isButtonActive={false}
-     handleClick={handleCloseModal}
+     isActive={false}
+     onClick={handleCloseModal}
     />
    </ModalActions>
   </ModalContainer>

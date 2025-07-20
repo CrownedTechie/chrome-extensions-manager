@@ -42,9 +42,26 @@ const SwitchThumb = styled(RadixSwitch.Thumb)`
  }
 `;
 
-export const SwitchButton = () => {
+interface ISwitchButtonProps {
+  id: string,
+  name: string;
+  isChecked: boolean;
+  toggleSwitch: (newState: boolean) => void;
+};
+
+export const SwitchButton = ({
+  id,
+  name,
+  isChecked,
+  toggleSwitch
+}: ISwitchButtonProps) => {
  return (
-  <SwitchRoot>
+  <SwitchRoot
+    id={id}
+    name={name}
+    checked={isChecked}
+    onCheckedChange={toggleSwitch}
+  >
    <SwitchThumb />
   </SwitchRoot>
  )

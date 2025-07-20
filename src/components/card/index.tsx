@@ -90,18 +90,35 @@ interface ICardProps {
  title: string;
  description: string;
  logo: string;
+ isCardActive: boolean;
+ id: string;
+ onToggleActive?: (title: string, newState: boolean) => void;
+ onRemoveClick: (title: string) => void;
 };
 
 export const Card = ({
  theme,
  title,
  description,
- logo
+ logo,
+ isCardActive,
+ id,
+ onToggleActive,
+ onRemoveClick
 }: ICardProps) => {
  const [openModal, setOpenModal] = useState<boolean>(false);
  const isDarkTheme = theme === "dark";
 
- const handleRemoveItem = () => {
+ const handleToggleSwitch = (newState: boolean) => {
+  if (onToggleActive) {
+   onToggleActive(title, newState);
+  }
+ };
+
+ const handleRemoveClick = () => {
+  if (onRemoveClick) {
+   onRemoveClick(title)
+  }
   setOpenModal(false);
  };
 
@@ -133,7 +150,12 @@ export const Card = ({
      <TextPreset6 text="Remove" />
     </CardButton>
 
-    <SwitchButton />
+    <SwitchButton 
+     id={id}
+     name={title}
+     isChecked={isCardActive}
+     toggleSwitch={handleToggleSwitch}
+    />
    </CardActions>
   </CardContainer>
 
@@ -144,7 +166,7 @@ export const Card = ({
     theme={theme}
     isModalOpen={openModal}
     handleCloseModal={() => setOpenModal(false)}
-    handleRemove={handleRemoveItem}
+    handleRemove={handleRemoveClick}
    />
   )}
   </>
