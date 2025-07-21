@@ -146,6 +146,7 @@ export const Card = ({
    <CardActions>
     <CardButton
      onClick={() => setOpenModal(true)}
+     type="button"
     >
      <TextPreset6 text="Remove" />
     </CardButton>

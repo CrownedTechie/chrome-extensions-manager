@@ -43,7 +43,7 @@ export const Header = ({
     alt="Extensions logo" 
    />
 
-   <ThemeIcon onClick={toggleTheme}>
+   <ThemeIcon type="button" onClick={toggleTheme}>
     <img 
      src={isDarkTheme ? SunIcon : MoonIcon} 
      alt={`${theme} icon`}

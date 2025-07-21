@@ -93,7 +93,7 @@ function App() {
 									{filteredCards.map((item, index) => (
 										<Card 
 											theme={theme} 
-											id={`${index}-${item.name}`}
+											id={`${item.name}-${index}`}
 											key={item.name}
 											title={item.name}
 											description={item.description}

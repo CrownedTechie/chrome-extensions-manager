@@ -59,10 +59,12 @@ export const Button = ({
 }: IButtonProps) => {
 	return (
 			<StyledButton
+				type="button"
 				$isActive={isActive}
 				onClick={onClick}
 			>
 					<Typography
+							as="span"
 							fontWeight={isActive ? "medium" : "regular"}
 							$textAlign="center"
 					>
