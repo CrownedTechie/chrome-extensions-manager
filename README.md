@@ -80,7 +80,7 @@ environments/         # Environment-specific configuration
 ```sh
   npm run build
 ```
-> **Note**: This will generate a dist/ folder containing the production-ready files
+> **Note**: This will generate a dist folder containing the production-ready files
 
 ##### 4. Load Extension in Chrome
   - **Open Chrome Extensions Page**
@@ -92,10 +92,10 @@ environments/         # Environment-specific configuration
 
   - **Load the Extension**
     1. Click "Load unpacked" button
-    2. In the file picker that opens, navigate to and select the `dist/` folder of the project
+    2. In the file picker that opens, navigate to and select the `dist` folder of the project
     3. Chrome will automatically load the extension
 
-> **Important**: Make sure to select the dist/ folder that was created after building the project, not the root project folder.
+> **Important**: Make sure to select the dist folder that was created after building the project, not the root project folder.
 
 
 ## Acknowledgements
