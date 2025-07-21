@@ -7,7 +7,7 @@ import { useState } from "react";
 const CardContainer = styled.article`
  width: 100%;
  max-width: 382px;
- min-height: 200px;
+ height: 12.5rem;
  padding: var(--spacing250);
  border-radius: var(--rounded20);
  border: 1px solid transparent;
