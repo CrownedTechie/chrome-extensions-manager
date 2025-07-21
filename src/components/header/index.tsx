@@ -39,14 +39,16 @@ export const Header = ({
  return (
   <HeaderContainer>
    <img 
-    src={isDarkTheme ? DarkThemeLogo :LightThemeLogo} 
+    src={isDarkTheme ? DarkThemeLogo : LightThemeLogo} 
     alt="Extensions logo" 
+    style={{ width: 179, height: 41 }}
    />
 
    <ThemeIcon onClick={toggleTheme}>
     <img 
      src={isDarkTheme ? SunIcon : MoonIcon} 
      alt={`${theme} icon`}
+     style={{ width: 22, height: 22 }}
     />
    </ThemeIcon>
   </HeaderContainer>
