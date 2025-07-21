@@ -151,6 +151,7 @@ const GridContainer = styled.div`
 	grid-template-columns: repeat(1, 1fr); 
 	gap: var(--spacing150);
 	place-items: center;
+	align-items: stretch;
 
 	@media (min-width: 768px) {
 		grid-template-columns: repeat(2, 1fr); 
