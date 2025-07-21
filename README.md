@@ -1,6 +1,6 @@
 # 🧩 About the Project
 
-This project is a Chrome extension that helps you manage your installed Chrome extensions with ease. It originally began as a solution to [Browser extensions manager UI challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/browser-extension-manager-ui-yNZnOfsMAp)—you can preview that version via the deployed web app (that uses mock data) [here](https://chrome-extensions-manager.vercel.app/), and if you're interested in the source code, check out the `staging-web` branch in the repository. Later, one of my mentors suggested turning it into a full-fledged Chrome extension... and here we are! 
+This project is a Chrome extension that helps you manage your installed Chrome extensions with ease. It originally began as a solution to [Browser extensions manager UI challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/browser-extension-manager-ui-yNZnOfsMAp)—you can preview that version via the deployed web app (that uses mock data) [here](https://chrome-extensions-manager.vercel.app/), and if you're interested in the source code, check out the `staging-web` branch in the repository. One of my mentors suggested turning it into a full-fledged Chrome extension... and here we are! 
 
 ## Table of contents
 
