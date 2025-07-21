@@ -130,6 +130,7 @@ export const Card = ({
     <img 
      src={logo}
      alt={`${title} Logo`}
+     style={{ width: 60, height: 60}}
     />
 
     <ExtensionDetails>
