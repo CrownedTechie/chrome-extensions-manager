@@ -10,6 +10,7 @@ const HeaderContainer = styled.header`
  padding: var(--spacing200) var(--spacing150);
  border: 1px solid transparent;
  border-radius: var(--rounded20);
+ max-height: 4.625rem;
 
  body[data-theme="light"] & {
   background-color: var(--neutral0);
