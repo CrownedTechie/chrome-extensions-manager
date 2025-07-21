@@ -91,3 +91,8 @@ body[data-theme="dark"] {
   color: var(--neutral0);
 }
 
+@media (max-width: 360px) {
+  main {
+    padding: var(--spacing500) var(--spacing150);
+  }
+}

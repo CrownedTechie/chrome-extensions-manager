@@ -1,59 +1,87 @@
 import "./index.css";
-import { Button, Card, Header, SectionHeader } from "./components";
+import { Button, Card, EmptyState, Header, SectionHeader } from "./components";
 import { usePreferredTheme } from "./utils";
 import styled from "styled-components";
-import { data } from "./data";
-import { useState } from "react";
-
-	interface UpdateQueryParams {
-		key: string;
-		value: string | null;
-	};
-
+import { useEffect, useState } from "react";
+import { EmptyStateIcon } from "./assets";
+	
 function App() {
 	const searchParams = new URLSearchParams(window.location.search);
 	const query = searchParams.get("tab") || "All";
 	const [activeTab, setActiveTab] = useState<string>(query);
-	const [extensionData, setExtensionData] = useState(data);
+	const [extensions, setExtensions] = useState<ChromeExtensionInfo[]>([]);
 	const { theme, setTheme } = usePreferredTheme();
-		
-		const updateQuery = (
-			key: UpdateQueryParams["key"], 
-			value: UpdateQueryParams["value"]
-		) => {
-			if (value) {
-				searchParams.set(key, value);
-			} else {
-				searchParams.delete(key);
-			}
-			window.history.pushState({}, "", `${window.location.pathname}?${searchParams}`);
-		};
+	const EXTENSION_ID = import.meta.env.VITE_EXTENSION_ID;
 
+	const updateQuery = (
+		key: IUpdateQueryParams["key"], 
+		value: IUpdateQueryParams["value"]
+	) => {
+		if (value) {
+			searchParams.set(key, value);
+		} else {
+			searchParams.delete(key);
+		}
+
+		window.history.pushState({}, "", `${window.location.pathname}?${searchParams}`);
+	};
+
+	const fetchExtensions = () => {
+		chrome.runtime.sendMessage(
+			EXTENSION_ID, 
+			"getExtensions", 
+			(response: { extensions?: ChromeExtensionInfo[] }) => {
+				if (response?.extensions) {
+					setExtensions(response.extensions);
+				}
+			}
+		);
+	};
+
+	useEffect(() => {
+		fetchExtensions();
+	}, []);
+		
+		
 		const handleTabClick = (tab: string) => {
 			setActiveTab(tab);
 			updateQuery("tab", tab);
 		};
 
-	const handleToggleActive = (title: string, newState: boolean) => {
-		setExtensionData(prevData => 
-			prevData.map(item => 
-				item.name === title 
-					? { ...item, isActive: newState }
-					: item
+		const handleToggleActive = (id: string, newState: boolean) => {
+			chrome.runtime.sendMessage(
+				EXTENSION_ID,
+				{
+					type: "toggleExtension",
+					payload: { id, enable: newState }
+				} as IToggleExtensionMessage,
+				(response: ISuccessProps) => {
+					if (response?.success) {
+						setTimeout(fetchExtensions, 100);
+					} 
+				}
 			)
-		);
-	};
+		};
 
-	const handleRemoveExtension = (title: string) => {
-		setExtensionData(prevData => 
-			prevData.filter(item => item.name !== title )
-		)
-	};
+		const handleRemoveExtension = (id: string) => {
+			chrome.runtime.sendMessage(
+				EXTENSION_ID,
+				{
+					type: "removeExtension",
+					payload: { id }
+				},
+				(response: ISuccessProps) => {
+					if (response?.success) {
+						fetchExtensions();
+					}
+				}
+			)
+		};
 
-		const activeCards = extensionData.filter(item => item.isActive);
-		const inactiveCards = extensionData.filter(item => !item.isActive);
+		const activeCards = extensions.filter(item => item.enabled);
+		const inactiveCards = extensions.filter(item => !item.enabled);
 		const filteredCards = {
-			All: extensionData,
+			All: extensions,
 			Active: activeCards,
 			Inactive: inactiveCards
 		}[activeTab] || [];
@@ -89,26 +117,36 @@ function App() {
 										</>
 									}
 								/>
-								<GridContainer>
-									{filteredCards.map((item, index) => (
-										<Card 
-											theme={theme} 
-											id={`${index}-${item.name}`}
-											key={item.name}
-											title={item.name}
-											description={item.description}
-											logo={item.logo}
-											isCardActive={item.isActive}
-											onToggleActive={handleToggleActive}
-											onRemoveClick={handleRemoveExtension}
+								{ filteredCards.length > 0 ? (
+										<GridContainer>
+											{filteredCards.map((item) => (
+												<Card 
+													theme={theme} 
+													id={item?.id}
+													key={item?.shortName}
+													title={item?.name}
+													description={item?.description}
+													logo={item?.icons ? (item.icons[2]?.url ?? item.icons[0]?.url) : ""}
+													isCardActive={item?.enabled}
+													onToggleActive={handleToggleActive}
+													onRemoveClick={handleRemoveExtension}
+												/>
+											))}
+										</GridContainer>
+									) : (
+										<EmptyState 
+											icon={EmptyStateIcon}
+											title="No Extensions Found!"
+											subtitle="Come back and see the magic ✨"
+											theme={theme}
 										/>
-									))}
-								</GridContainer>
+									)
+								}
 							</section>
       </main>
     </>
   )
-}
+};
 
 export default App;
 
@@ -116,6 +154,7 @@ const GridContainer = styled.div`
 	display: grid;
 	grid-template-columns: repeat(1, 1fr); 
 	gap: var(--spacing150);
+	place-items: center;
 
 	@media (min-width: 768px) {
 		grid-template-columns: repeat(2, 1fr); 

@@ -31,6 +31,12 @@ const CardHeader = styled.header`
  gap: var(--spacing200);
 `;
 
+const CardLogo = styled.img`
+ width: 3.75rem;
+ height: 3.75rem;
+ border-radius: var(--spacing10);
+`;
+
 const ExtensionDetails = styled.div`
  display: flex;
  flex-direction: column;
@@ -92,8 +98,8 @@ interface ICardProps {
  logo: string;
  isCardActive: boolean;
  id: string;
- onToggleActive?: (title: string, newState: boolean) => void;
- onRemoveClick: (title: string) => void;
+ onToggleActive?: (id: string, newState: boolean) => void;
+ onRemoveClick: (id: string) => void;
 };
 
 export const Card = ({
@@ -111,13 +117,13 @@ export const Card = ({
 
  const handleToggleSwitch = (newState: boolean) => {
   if (onToggleActive) {
-   onToggleActive(title, newState);
+   onToggleActive(id, newState);
   }
  };
 
  const handleRemoveClick = () => {
   if (onRemoveClick) {
-   onRemoveClick(title)
+   onRemoveClick(id);
   }
   setOpenModal(false);
  };
@@ -126,9 +132,9 @@ export const Card = ({
   <>
    <CardContainer>
    <CardHeader>
-    <img 
+    <CardLogo
      src={logo}
-     alt={`${title} Logo`}
+     alt={`${title} Logo`} 
     />
 
     <ExtensionDetails>

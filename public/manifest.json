@@ -4,9 +4,26 @@
   "version": "1.0.0",
   "description": "An extension that allows you to manage your extensions easily.",
   "action": {
-    "default_popup": "index.html"
+    "default_title": "Extension Manager"
   },
   "icons": {
     "48": "logo.png"
-  }
+  },
+  "permissions": [
+    "management",
+    "sidePanel",
+    "tabs",
+    "scripting"
+  ],
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "background": {
+    "service_worker": "src/background.ts"
+  },
+  "host_permissions": ["<all_urls>"],
+  "web_accessible_resources": [{
+    "resources": ["index.html"],
+    "matches": ["<all_urls>"]
+  }]
 }

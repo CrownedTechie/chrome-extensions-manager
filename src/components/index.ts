@@ -1,5 +1,6 @@
 export * from "./button";
 export * from "./card";
+export * from "./emptyState";
 export * from "./header";
 export * from "./removeModal";
 export * from "./sectionHeader";
