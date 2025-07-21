@@ -11,7 +11,6 @@ function App() {
 	const [activeTab, setActiveTab] = useState<string>(query);
 	const [extensions, setExtensions] = useState<ChromeExtensionInfo[]>([]);
 	const { theme, setTheme } = usePreferredTheme();
-	const EXTENSION_ID = import.meta.env.VITE_EXTENSION_ID;
 
 	const updateQuery = (
 		key: IUpdateQueryParams["key"], 
@@ -27,8 +26,7 @@ function App() {
 	};
 
 	const fetchExtensions = () => {
-		chrome.runtime.sendMessage(
-			EXTENSION_ID, 
+		chrome.runtime.sendMessage( 
 			"getExtensions", 
 			(response: { extensions?: ChromeExtensionInfo[] }) => {
 				if (response?.extensions) {
@@ -50,7 +48,6 @@ function App() {
 
 		const handleToggleActive = (id: string, newState: boolean) => {
 			chrome.runtime.sendMessage(
-				EXTENSION_ID,
 				{
 					type: "toggleExtension",
 					payload: { id, enable: newState }
@@ -65,7 +62,6 @@ function App() {
 
 		const handleRemoveExtension = (id: string) => {
 			chrome.runtime.sendMessage(
-				EXTENSION_ID,
 				{
 					type: "removeExtension",
 					payload: { id }
