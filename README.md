@@ -7,6 +7,7 @@ This project is a Chrome extension that helps you manage your installed Chrome e
 - [Overview](#overview)
   - [Features](#features)
   - [Branches](#branches)
+- [Quick Access](#quick-access)
 - [Project Structure](#project-structure)
 - [Installation](#installation)
     - [Prerequisites](#prerequisites)
@@ -33,6 +34,11 @@ Users should be able to:
 | `main` | Chrome extension |
 | `staging-web` | Web app version (uses mock data) |
 
+## Quick Access
+Don’t feel like messing with Developer Mode?
+
+Just download the [chrome-extensions-manager.zip](https://github.com/CrownedTechie/chrome-extensions-manager/releases/download/v1.0.0/chrome-extensions-manager.zip), unzip it, and follow the *"Load Extension in Chrome"* steps from the Installation section — but this time, select the extracted folder. 
+Alternatively, you can head over to the [latest release page](https://github.com/CrownedTechie/chrome-extensions-manager/releases/tag/v1.0.0) and follow the steps from there.
 
 ## Project Structure
 
@@ -58,7 +64,6 @@ environments/         # Environment-specific configuration
 - Node.js (v20 or later)
 - npm
 
-
 #### Steps
 
 ##### 1. Clone the repository
@@ -77,10 +82,10 @@ environments/         # Environment-specific configuration
 ```
 > **Note**: This will generate a dist/ folder containing the production-ready files
 
-##### 4. Load Extensions in Chrome
+##### 4. Load Extension in Chrome
   - **Open Chrome Extensions Page**
     1. Open Chrome browser
-    2. Navigate to `chrome://extensions/` or paste it in your address bar
+    2. Go to `chrome://extensions/` or paste it in your address bar
 
   - **Enable Developer Mode**
     1. Toggle the **Developer mode** switch at the top right of the page
