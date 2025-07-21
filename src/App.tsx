@@ -10,11 +10,19 @@ import { useState } from "react";
 		value: string | null;
 	};
 
+	interface IExtensionDataProps {
+		id: string,
+		logo: string,
+		name: string,
+		description: string,
+		isActive: boolean
+	};
+
 function App() {
 	const searchParams = new URLSearchParams(window.location.search);
 	const query = searchParams.get("tab") || "All";
 	const [activeTab, setActiveTab] = useState<string>(query);
-	const [extensionData, setExtensionData] = useState(data);
+	const [extensionData, setExtensionData] = useState<IExtensionDataProps[]>(data);
 	const { theme, setTheme } = usePreferredTheme();
 		
 		const updateQuery = (
@@ -34,19 +42,19 @@ function App() {
 			updateQuery("tab", tab);
 		};
 
-	const handleToggleActive = (title: string, newState: boolean) => {
+	const handleToggleActive = (id: string, newState: boolean) => {
 		setExtensionData(prevData => 
 			prevData.map(item => 
-				item.name === title 
+				item.id === id 
 					? { ...item, isActive: newState }
 					: item
 			)
 		);
 	};
 
-	const handleRemoveExtension = (title: string) => {
+	const handleRemoveExtension = (id: string) => {
 		setExtensionData(prevData => 
-			prevData.filter(item => item.name !== title )
+			prevData.filter(item => item.id !== id )
 		)
 	};
 
@@ -90,10 +98,10 @@ function App() {
 									}
 								/>
 								<GridContainer>
-									{filteredCards.map((item, index) => (
+									{filteredCards.map((item) => (
 										<Card 
 											theme={theme} 
-											id={`${item.name}-${index}`}
+											id={item.id}
 											key={item.name}
 											title={item.name}
 											description={item.description}

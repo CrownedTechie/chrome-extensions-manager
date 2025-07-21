@@ -92,8 +92,8 @@ interface ICardProps {
  logo: string;
  isCardActive: boolean;
  id: string;
- onToggleActive?: (title: string, newState: boolean) => void;
- onRemoveClick: (title: string) => void;
+ onToggleActive?: (id: string, newState: boolean) => void;
+ onRemoveClick: (id: string) => void;
 };
 
 export const Card = ({
@@ -111,13 +111,13 @@ export const Card = ({
 
  const handleToggleSwitch = (newState: boolean) => {
   if (onToggleActive) {
-   onToggleActive(title, newState);
+   onToggleActive(id, newState);
   }
  };
 
  const handleRemoveClick = () => {
   if (onRemoveClick) {
-   onRemoveClick(title)
+   onRemoveClick(id)
   }
   setOpenModal(false);
  };
